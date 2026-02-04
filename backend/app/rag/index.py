@@ -3,8 +3,14 @@ from .embeddings import embed
 from .store import collection
 import uuid
 
-def index_docs():
+def index_docs(force=False):
+    if not force and collection.count() > 0:
+        return
+
     docs = load_docs()
+    if not docs:
+        print("No documents found to index.")
+        return
 
     for doc in docs:
         collection.add(
@@ -16,4 +22,4 @@ def index_docs():
 
 if __name__ == "__main__":
     index_docs()
-    print("✅ Docs indexed")
+    print("Docs indexed")

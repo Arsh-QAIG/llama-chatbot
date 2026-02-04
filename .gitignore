@@ -13,3 +13,7 @@ node_modules/
 
 # Editor
 .vscode/
+# Ignore ChromaDB and SQLite database files
+*.sqlite3
+/backend/data/chroma/
+*.bin
